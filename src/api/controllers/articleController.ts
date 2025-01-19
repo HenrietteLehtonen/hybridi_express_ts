@@ -24,7 +24,7 @@ const articleGet = (req: Request<{id: string}>, res: Response<Article>) => {
 };
 
 const articlePost = (
-  req: Request<unknown, unknown, Article>,
+  req: Request<unknown, unknown, Omit<Article, 'id'>>,
   res: Response<Article>,
   next: NextFunction,
 ) => {
@@ -37,7 +37,8 @@ const articlePost = (
 };
 
 const articlePut = (
-  req: Request<{id: string}, unknown, Article>,
+  // päivitetään PUTilla -> tiedetään id
+  req: Request<{id: string}, unknown, Omit<Article, 'id'>>,
   res: Response<Article>,
   next: NextFunction,
 ) => {
@@ -46,6 +47,7 @@ const articlePut = (
       Number(req.params.id),
       req.body.title,
       req.body.description,
+      req.body.author_id,
     );
     res.json(article);
   } catch (error) {

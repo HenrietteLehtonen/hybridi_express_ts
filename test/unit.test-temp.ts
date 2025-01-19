@@ -12,6 +12,7 @@ const testArticle: Article = {
   id: 0, // This will be updated after creation
   title: 'Test Article',
   description: 'This is the content of article 1',
+  author_id: 0,
 };
 
 // Unit tests to test functions in src/api/models/articleModel.ts
@@ -68,6 +69,7 @@ describe('Article functions', () => {
         testArticle.id,
         'Updated Title',
         'Updated Description',
+        0,
       );
       expect(updatedArticle).toBeDefined();
       expect(updatedArticle.title).toBe('Updated Title');
