@@ -45,6 +45,7 @@ const createAuthor = (author: Omit<Author, 'id'>): Author => {
 
 // Delete author - korjaa FK contraint fail
 const deleteAuthor = (id: number | bigint): void => {
+  db.prepare('DELETE FROM articles WHERE author_id = ?').run(id);
   const result = db.prepare('DELETE FROM authors WHERE id = ?').run(id);
 
   if (result.changes === 0) {
@@ -53,3 +54,5 @@ const deleteAuthor = (id: number | bigint): void => {
 };
 
 export {getAllAuthors, getAuthor, updateAuthor, createAuthor, deleteAuthor};
+
+// DELETE FROM articles WHERE author_id = ? IN (SELECT id FROM authors WHERE id = ?)
