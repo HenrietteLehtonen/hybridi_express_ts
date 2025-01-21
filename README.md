@@ -75,3 +75,7 @@ This project is licensed under the Apache License 2.0. See the [LICENSE](https:/
 ## INTEGRATION TEST
 
 ![integraatio-testi](./integration-test.png)
+
+## UNIT TEST
+
+![unit-testi](./unit-test.png)

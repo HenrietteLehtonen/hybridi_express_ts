@@ -43,7 +43,7 @@ const createAuthor = (author: Omit<Author, 'id'>): Author => {
   return getAuthor(result.lastInsertRowid);
 };
 
-// Delete author - korjaa FK contraint fail
+// Delete author
 const deleteAuthor = (id: number | bigint): void => {
   db.prepare('DELETE FROM articles WHERE author_id = ?').run(id);
   const result = db.prepare('DELETE FROM authors WHERE id = ?').run(id);
